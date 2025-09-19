@@ -1,0 +1,43 @@
+Hallo reviewers,
+
+Bedankt voor het bekijken van mijn oplossing.  
+Hierbij enkele korte notities vanuit mijn kant:
+
+────────────────────────────
+Hoofdopdracht
+────────────────────────────
+- Het probleem met de race condition is opgelost met een atomaire update (F() expression).
+- Twee gelijktijdige onttrekkingen van 10 kg zorgen nu correct voor een daling van 20 kg.
+
+────────────────────────────
+Bonusopdracht
+────────────────────────────
+- In plaats van een database-exception bij een leeg vat verschijnt nu een duidelijke waarschuwing.
+- Dit verbetert de gebruikservaring en voorkomt dat de applicatie crasht.
+
+────────────────────────────
+Voorstellen voor mogelijke upgrades
+────────────────────────────
+(Optioneel – niet gevraagd, maar interessant in een productieomgeving)
+
+1. **Service layer**
+   - Verplaats de withdraw-logica naar een aparte servicefunctie (bv. `services.py`).
+   - Voordelen: herbruikbaar in management commands, views of API’s, en beter testbaar.
+
+2. **Unit tests**
+   - Voeg tests toe die concurrerende withdraws simuleren.
+   - Bewijst dat de fix (van -10 → -20 kg) correct blijft werken in de toekomst.
+
+3. **Extra CLI-opties**
+   - Ondersteun parameters zoals `--users`, `--amount`, of `--start-content`.
+   - Maakt het eenvoudiger om snel verschillende scenario’s te testen.
+
+────────────────────────────
+Bewuste keuze
+────────────────────────────
+Voor deze testopdracht heb ik mij beperkt tot:
+- het fixen van de bug  
+- en het uitvoeren van de bonus  
+
+De bovengenoemde ideeën zijn suggesties voor een echte productieomgeving,  
+maar vallen buiten de scope van deze oefening.
